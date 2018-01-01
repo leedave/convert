@@ -4,22 +4,31 @@ All Notable changes to `leech/convert` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.0.2] - 2018-01-01 ##
+## [1.0.3] - 2018-01-01 ##
 
 ### Added ###
-- Unit Tests
+- array2UriParams
+- uriParams2Array
 
 ### Deprecated ###
 - Nothing
 
 ### Fixed ###
-- composer.json
+- Nothing
 
 ### Removed ###
 - Nothing
 
 ### Security ###
 - Nothing
+
+## [1.0.2] - 2018-01-01 ##
+
+### Added ###
+- Unit Tests
+
+### Fixed ###
+- composer.json
 
 ## [1.0.0] - 2018-01-01 ##
 

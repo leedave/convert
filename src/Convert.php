@@ -13,7 +13,8 @@ class Convert
      * @param string $text
      * @return string
      */
-    public static function slugify(string $text) {
+    public static function slugify(string $text) : string 
+    {
         $lowerText = strtolower($text);
         $arrTransform = [
             "ä" => "ae",
@@ -69,7 +70,7 @@ class Convert
      * @param string $json
      * @return array
      */
-    public static function json_decode(string $json)
+    public static function json_decode(string $json) : array
     {
         return json_decode($json, true);
     }
@@ -79,8 +80,50 @@ class Convert
      * @param array $arrData
      * @return string
      */
-    public static function json_encode(array $arrData)
+    public static function json_encode(array $arrData) : string
     {
         return json_encode($arrData, JSON_UNESCAPED_UNICODE);
+    }
+    
+    /**
+     * Takes URI Params (foo=bar&key=value) and makes an associative array 
+     * out of them ["foo" => "bar", "key" => "value"]
+     * @param string $uriParams
+     * @return array
+     */
+    public static function uriParams2Array(string $uriParams) : array
+    {
+        $stringUriParams = str_replace("?", "", $uriParams);
+        $arrSingleParams = explode("&", $stringUriParams);
+        
+        $arrReturn = [];
+        
+        foreach ($arrSingleParams as $param) {
+            $arrParam = explode("=", $param);
+            $key = $arrParam[0];
+            $val = '';
+            if (isset($arrParam[1])) {
+                $val = $arrParam[1];
+            }
+            $arrReturn[urldecode($key)] = urldecode($val);
+        }
+        return $arrReturn;
+    }
+    
+    /**
+     * Turns an associative array into url parameters, also slugs entries
+     * from ["foo" => "bar", "key" => "val"] to foo=bar&key=val
+     * @param array $arrParams
+     * @return string
+     */
+    public static function array2UriParams(array $arrParams) : string
+    {
+        $arrKeyVal = [];
+        foreach ($arrParams as $key => $value) {
+            $arrKeyVal[] = urlencode($key)."=".urlencode($value);
+            //Not using slugify, want to be able to have php decode
+        }
+        $arrReturn = implode("&", $arrKeyVal);
+        return $arrReturn;
     }
 }
