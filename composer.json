@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Leedch\\Unitest\\": "src"
+            "Leedch\\Convert\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Leedch\\Unitest\\": "tests"
+            "Leedch\\Convert\\": "tests"
         }
     },
     "scripts": {
