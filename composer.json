@@ -1,0 +1,44 @@
+{
+    "name": "leedch/convert",
+    "type": "library",
+    "description": "Data conversion methods",
+    "keywords": [
+        "leedch",
+        "data",
+        "conversion",
+        "json",
+        "slug"
+    ],
+    "homepage": "https://github.com/leedave/convert.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Lee",
+            "email": "leed@leed.ch",
+            "homepage": "https://www.leed.ch/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~7.0|~7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Leedch\\Unitest\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Leedch\\Unitest\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
