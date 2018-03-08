@@ -15,8 +15,13 @@ class ConvertTest extends TestCase {
         $responseNoSpace = Convert::alphanumeric($textXss, false);
         $expectedNoSpace = "thisisäscriptjavascriptalerttestscriptstringwithxss";
         
+        $textHtml = "Name and Image <img src=\"https://media.leed.ch/data/cache/img/64_1416166070.jpg\" />";
+        $responseHtml = Convert::alphanumeric($textHtml);
+        $expectedHtml = "Name and Image img srchttpsmedialeedchdatacacheimg641416166070jpg ";
+        
         $this->assertEquals($expected, $response);
         $this->assertEquals($expectedNoSpace, $responseNoSpace); 
+        $this->assertEquals($expectedHtml, $responseHtml);
     }
     
     public function testSlugify() 
