@@ -4,11 +4,10 @@ All Notable changes to `leech/convert` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.0.3] - 2018-01-01 ##
+## [1.0.4] - 2018-03-08 ##
 
 ### Added ###
-- array2UriParams
-- uriParams2Array
+- alphanumeric converter and tests
 
 ### Deprecated ###
 - Nothing
@@ -21,6 +20,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Security ###
 - Nothing
+
+## [1.0.3] - 2018-01-01 ##
+
+### Added ###
+- array2UriParams
+- uriParams2Array
 
 ## [1.0.2] - 2018-01-01 ##
 

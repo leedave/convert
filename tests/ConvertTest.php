@@ -7,6 +7,18 @@ use PHPUnit\Framework\TestCase;
 
 class ConvertTest extends TestCase {
 
+    public function testAlphanumeric() 
+    {
+        $textXss = "this is ä <script>javascript:alert('test');</script> string with xss";
+        $response = Convert::alphanumeric($textXss);
+        $expected = "this is ä scriptjavascriptalerttestscript string with xss";
+        $responseNoSpace = Convert::alphanumeric($textXss, false);
+        $expectedNoSpace = "thisisäscriptjavascriptalerttestscriptstringwithxss";
+        
+        $this->assertEquals($expected, $response);
+        $this->assertEquals($expectedNoSpace, $responseNoSpace); 
+    }
+    
     public function testSlugify() 
     {
         $textAscii = "This is a nice page, I lik'd it";

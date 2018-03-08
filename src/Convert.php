@@ -8,6 +8,18 @@ namespace Leedch\Convert;
  */
 class Convert
 {
+    public static function alphanumeric(
+        string $text, 
+        bool $allowSpaces = true
+    ) : string 
+    {
+        $repsonse = preg_replace("/[^a-zA-Z0-9 äàáąåçéèêēëàaÆæíìîīïñöôǫòõøßẞüûùúȳŷÄÀÁĄÅÇÉÈÊĒËÀAÆÆÍÌÎĪÏÑÖÔǪÒÕØSSẞÜÛÙÚȲŶ]+/", "", $text); 
+        if (!$allowSpaces) {
+            $repsonse = preg_replace("/[^a-zA-Z0-9äàáąåçéèêēëàaÆæíìîīïñöôǫòõøßẞüûùúȳŷÄÀÁĄÅÇÉÈÊĒËÀAÆÆÍÌÎĪÏÑÖÔǪÒÕØSSẞÜÛÙÚȲŶ]+/", "", $text); 
+        }
+        return $repsonse;
+    }
+    
     /**
      * Converts a string into a url friendly format
      * @param string $text
