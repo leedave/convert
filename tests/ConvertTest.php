@@ -7,6 +7,23 @@ use PHPUnit\Framework\TestCase;
 
 class ConvertTest extends TestCase {
 
+    public function testAlphanumeric() 
+    {
+        $textXss = "this is ä <script>javascript:alert('test');</script> string with xss";
+        $response = Convert::alphanumeric($textXss);
+        $expected = "this is ä scriptjavascriptalerttestscript string with xss";
+        $responseNoSpace = Convert::alphanumeric($textXss, false);
+        $expectedNoSpace = "thisisäscriptjavascriptalerttestscriptstringwithxss";
+        
+        $textHtml = "Name and Image <img src=\"https://media.leed.ch/data/cache/img/64_1416166070.jpg\" />";
+        $responseHtml = Convert::alphanumeric($textHtml);
+        $expectedHtml = "Name and Image img srchttpsmedialeedchdatacacheimg641416166070jpg ";
+        
+        $this->assertEquals($expected, $response);
+        $this->assertEquals($expectedNoSpace, $responseNoSpace); 
+        $this->assertEquals($expectedHtml, $responseHtml);
+    }
+    
     public function testSlugify() 
     {
         $textAscii = "This is a nice page, I lik'd it";
